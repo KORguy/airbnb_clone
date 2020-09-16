@@ -6,6 +6,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { Avatar, Button, Icon } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import IconButton from "@material-ui/core/IconButton";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 
 interface HeaderProps {}
 
@@ -16,13 +17,13 @@ export const Header: React.FC<HeaderProps> = ({}) => {
     <div>
       <div className="header">
         <div className="box">
-          <a href="#">
+          <Link to="/">
             <img
               className="header_icon"
               src={require("../images/logo2.png")}
               alt="logo"
             />
-          </a>
+          </Link>
         </div>
         <div className="box">
           <button onClick={() => setActive(true)} disabled={active}>
@@ -31,11 +32,15 @@ export const Header: React.FC<HeaderProps> = ({}) => {
           <button onClick={() => setActive(false)} disabled={!active}>
             체험
           </button>
-          <button>온라인 체험</button>
+          <button className="activity">
+            <span>온라인 체험</span>
+          </button>
         </div>
         <div className="box">
           <span>
-            <button>호스트 되기</button>
+            <Link to="/Host">
+              <button className="host">호스트 되기</button>
+            </Link>
             <IconButton>
               <LanguageIcon />
               <ExpandMoreIcon />

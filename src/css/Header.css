@@ -38,7 +38,7 @@
   padding: 7px;
 }
 
-.box:last-child > span > button {
+.host {
   padding: 20px;
   background-color: transparent;
   border: none;
@@ -46,11 +46,11 @@
   border-radius: 999px;
 }
 
-.box:last-child > span > button:focus {
+.host:focus {
   outline: none;
 }
 
-.box:last-child > span > button:hover {
+.host:hover {
   background-color: #ededed;
 }
 
@@ -60,18 +60,21 @@
   margin-left: 80px;
 }
 
-.box > button {
+.box > button,
+.activity {
   padding: 20px;
   background-color: transparent;
   border: none;
   cursor: pointer;
 }
 
-.box > button:focus {
+.box > button:focus,
+.activity:focus {
   outline: none;
 }
 
-.box > button:hover {
+.box > button:hover,
+.activity:hover {
   color: lightgray;
   text-decoration: underline;
 }
