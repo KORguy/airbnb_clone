@@ -1,0 +1,143 @@
+.top-warning {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 550;
+  height: 10%;
+}
+
+.top-warning > a {
+  color: black;
+}
+
+.header {
+  display: flex;
+}
+
+.box {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.box:first-child > a {
+  margin-right: auto;
+}
+
+.box:last-child > span {
+  margin-left: auto;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+}
+
+.box:last-child > span > * {
+  padding: 7px;
+}
+
+.box:last-child > span > button {
+  padding: 20px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 999px;
+}
+
+.box:last-child > span > button:focus {
+  outline: none;
+}
+
+.box:last-child > span > button:hover {
+  background-color: #ededed;
+}
+
+.header_icon {
+  object-fit: contain;
+  height: 40px;
+  margin-left: 80px;
+}
+
+.box > button {
+  padding: 20px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.box > button:focus {
+  outline: none;
+}
+
+.box > button:hover {
+  color: lightgray;
+  text-decoration: underline;
+}
+
+.box > button:disabled {
+  color: black;
+  cursor: default;
+  text-decoration: underline;
+}
+
+.box:last-child {
+  width: 15vw;
+}
+
+.box:last-child > span > a:hover > .avatar {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.box:last-child > span > a:active {
+  color: black;
+}
+
+.box:last-child > span > a:visited {
+  color: black;
+}
+
+.avatar {
+  display: flex;
+  border: 1px solid lightgray;
+  border-radius: 999px;
+  padding: 7px;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 80px;
+}
+
+.menu {
+  margin-right: 15px;
+  font-size: small;
+}
+
+.header_2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  position: sticky;
+  background-color: transparent;
+  z-index: 100;
+  width: 100%;
+}
+
+.search {
+  margin: auto;
+  max-width: fit-content;
+  padding: 10px;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  border: 1px solid lightgray;
+  border-radius: 999px;
+}
+
+.search > input {
+  border: none;
+  outline-width: 0;
+  padding: 10px;
+  width: 400px;
+}
