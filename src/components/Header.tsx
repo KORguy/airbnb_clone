@@ -41,7 +41,7 @@ export const Header: React.FC<HeaderProps> = ({}) => {
             <Link to="/Host">
               <button className="host">호스트 되기</button>
             </Link>
-            <IconButton>
+            <IconButton style={{ color: "white" }}>
               <LanguageIcon />
               <ExpandMoreIcon />
             </IconButton>

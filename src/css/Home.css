@@ -1,0 +1,59 @@
+.tp-bnr-image {
+  background-image: url("../images/banner_image.jpeg");
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: auto;
+}
+
+.banner-text {
+  color: white;
+  padding-top: 150px;
+  padding-bottom: 150px;
+  margin-left: 60px;
+  line-height: 1.6;
+}
+
+.banner-title {
+  font-weight: bold;
+}
+
+.banner-btn {
+  padding: 10px;
+  margin-top: 10px;
+  font-weight: bold;
+  color: black;
+  border-radius: 10px;
+  border-color: transparent;
+}
+
+.card {
+  border-width: 0px 5px;
+  width: 33%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  height: 400px;
+  margin: 1.5%;
+}
+
+.card_image {
+  object-fit: cover;
+  max-width: 100%;
+  max-height: fit-content;
+  border-radius: 20px 20px 0px 0px;
+}
+
+.card_container {
+  padding: 20px;
+}
+
+.middle-cards {
+  display: flex;
+  margin: 10px 3% 20px 3%;
+}
+
+.footer {
+  width: 100%;
+}
