@@ -11,25 +11,41 @@ import { BrowserRouter as Router, Link } from "react-router-dom";
 interface HeaderProps {}
 
 export const Header: React.FC<HeaderProps> = ({}) => {
-  const [active, setActive] = useState(true);
+  const [active, setActive] = useState<boolean>(true);
+  const [first, setFirst] = useState<boolean>(true);
+  const [focused, setFocused] = useState<string>("white");
 
   return (
-    <div>
+    <div className="nav">
       <div className="header">
         <div className="box">
           <Link to="/">
             <img
               className="header_icon"
-              src={require("../images/logo2.png")}
+              src={require("../images/logo.png")}
               alt="logo"
             />
           </Link>
         </div>
         <div className="box">
-          <button onClick={() => setActive(true)} disabled={active}>
+          <button
+            onClick={() => {
+              setActive(true);
+              setFirst(true);
+              setFocused("white");
+            }}
+            disabled={active}
+          >
             숙소
           </button>
-          <button onClick={() => setActive(false)} disabled={!active}>
+          <button
+            onClick={() => {
+              setActive(false);
+              setFirst(false);
+              setFocused("white");
+            }}
+            disabled={!active}
+          >
             체험
           </button>
           <button className="activity">
@@ -54,11 +70,121 @@ export const Header: React.FC<HeaderProps> = ({}) => {
           </span>
         </div>
       </div>
+
       <div className="header_2">
-        <div className="search">
-          <input type="text" />
-          <SearchIcon />
-        </div>
+        {first && (
+          <div
+            className="search-box-container"
+            style={{ backgroundColor: `${focused}` }}
+          >
+            <div
+              className="search-box"
+              onClick={() => setFocused("rgb(240, 240, 240)")}
+              style={{ flexGrow: 3 }}
+              tabIndex={0}
+            >
+              <p className="search-title">위치</p>
+              <input
+                className="search-input"
+                type="text"
+                style={{ backgroundColor: `${focused}` }}
+                placeholder="어디로 여행가세요?"
+              />
+            </div>
+            <div
+              className="search-box"
+              onClick={() => setFocused("rgb(240, 240, 240)")}
+              tabIndex={0}
+            >
+              <p className="search-title">체크인</p>
+              <input
+                className="search-input"
+                type="text"
+                style={{ backgroundColor: `${focused}` }}
+                placeholder="날짜 추가"
+                disabled
+              />
+            </div>
+            <div
+              className="search-box"
+              onClick={() => setFocused("rgb(240, 240, 240)")}
+              tabIndex={0}
+            >
+              <p className="search-title">체크아웃</p>
+              <input
+                className="search-input"
+                type="text"
+                style={{ backgroundColor: `${focused}` }}
+                placeholder="날짜 추가"
+                disabled
+              />
+            </div>
+            <div
+              className="search-box"
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+              onClick={() => setFocused("rgb(240, 240, 240)")}
+              tabIndex={0}
+            >
+              <div>
+                <p className="search-title">인원</p>
+                <input
+                  className="search-input"
+                  type="text"
+                  style={{ backgroundColor: `${focused}` }}
+                  placeholder="게스트 추가"
+                  disabled
+                />
+              </div>
+              <SearchIcon className="search-btn" />
+            </div>
+          </div>
+        )}
+        {!first && (
+          <div
+            className="search-box-container"
+            style={{ backgroundColor: `${focused}` }}
+          >
+            <div
+              className="search-box"
+              onClick={() => setFocused("rgb(240, 240, 240)")}
+              tabIndex={0}
+            >
+              <p className="search-title">위치</p>
+              <input
+                className="search-input"
+                type="text"
+                placeholder="어디로 여행가세요?"
+                style={{ backgroundColor: `${focused}` }}
+              />
+            </div>
+            <div
+              className="search-box"
+              tabIndex={0}
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+              onClick={() => setFocused("rgb(240, 240, 240)")}
+            >
+              <div>
+                <p className="search-title">날짜</p>
+                <input
+                  className="search-input"
+                  type="text"
+                  placeholder="원하는 날짜를 입력하세요."
+                  disabled
+                  style={{ backgroundColor: `${focused}` }}
+                />
+              </div>
+              <SearchIcon className="search-btn" />
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

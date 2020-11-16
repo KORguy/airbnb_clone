@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import "../css/Home.css";
 // components
@@ -6,15 +6,42 @@ import { Header } from "../components/Header";
 import { Warningbar } from "../components/Warningbar";
 import { Card } from "../components/Card";
 import { Footer } from "../components/Footer";
+import { CollapsedNavBar } from "../components/CollapsedNavBar";
 
 interface HomeProps {}
 
 export const Home: React.FC<HomeProps> = ({}) => {
+  const [scrolled, setScrolled] = useState<boolean>(false);
+  const [navClicked, setNavClicked] = useState<boolean>(false);
+
+  const handleScroll = () => {
+    var offset = window.pageYOffset;
+    if (offset == 0) {
+      setScrolled(false);
+      setNavClicked(false);
+    } else {
+      setScrolled(true);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  });
+
   return (
     <div className="Home">
-      <Warningbar />
+      {!scrolled && <Warningbar />}
       <div className="tp-bnr-image">
-        <Header />
+        {!scrolled && <Header />}
+        {scrolled && (
+          <CollapsedNavBar
+            navClicked={navClicked}
+            setNavClicked={setNavClicked}
+          />
+        )}
         <div className="top-banner">
           <div className="banner-text">
             <h1 className="banner-title">이제, 여행은 가까운</h1>
