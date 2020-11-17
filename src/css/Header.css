@@ -312,3 +312,52 @@
   font-size: 16px;
   font-weight: 530;
 }
+
+.location_nav {
+  width: 65vw;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.location_nav_text {
+  background-color: white;
+  width: 45%;
+  height: 120px;
+  border-radius: 20px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
+  text-align: center;
+  line-height: 120px;
+}
+
+.location_nav_text > p {
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+.date_nav {
+  width: 65vw;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.date_nav_text {
+  background-color: white;
+  width: 100%;
+  height: 350px;
+  border-radius: 20px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
+}
+
+.member_nav {
+  width: 65vw;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.member_nav_text {
+  background-color: white;
+  width: 40%;
+  height: 300px;
+  border-radius: 20px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
+}

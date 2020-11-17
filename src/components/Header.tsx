@@ -8,12 +8,24 @@ import MenuIcon from "@material-ui/icons/Menu";
 import IconButton from "@material-ui/core/IconButton";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 
+import { Location_nav } from "./Location_nav";
+import { Date_nav } from "./Date_nav";
+import { Member_nav } from "./Member_nav";
+
 interface HeaderProps {}
 
 export const Header: React.FC<HeaderProps> = ({}) => {
   const [active, setActive] = useState<boolean>(true);
   const [first, setFirst] = useState<boolean>(true);
   const [focused, setFocused] = useState<string>("white");
+  const [locationClicked, setLocationClicked] = useState<boolean>(false);
+  const [dateClicked, setDateClicked] = useState<boolean>(false);
+  const [memberClicked, setMemberClicked] = useState<boolean>(false);
+
+  const [location, setLocation] = useState<string>("");
+  const [arrDate, setArrData] = useState<string>("");
+  const [depDate, setDepDate] = useState<string>("");
+  const [member, setMember] = useState<string>("");
 
   return (
     <div className="nav">
@@ -79,8 +91,13 @@ export const Header: React.FC<HeaderProps> = ({}) => {
           >
             <div
               className="search-box"
-              onClick={() => setFocused("rgb(240, 240, 240)")}
-              style={{ flexGrow: 3 }}
+              onClick={() => {
+                setFocused("rgb(240, 240, 240)");
+                setLocationClicked(true);
+                setDateClicked(false);
+                setMemberClicked(false);
+              }}
+              style={{ flexGrow: 3, display: "overflow" }}
               tabIndex={0}
             >
               <p className="search-title">위치</p>
@@ -89,11 +106,18 @@ export const Header: React.FC<HeaderProps> = ({}) => {
                 type="text"
                 style={{ backgroundColor: `${focused}` }}
                 placeholder="어디로 여행가세요?"
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
               />
             </div>
             <div
               className="search-box"
-              onClick={() => setFocused("rgb(240, 240, 240)")}
+              onClick={() => {
+                setFocused("rgb(240, 240, 240)");
+                setLocationClicked(false);
+                setDateClicked(true);
+                setMemberClicked(false);
+              }}
               tabIndex={0}
             >
               <p className="search-title">체크인</p>
@@ -102,18 +126,25 @@ export const Header: React.FC<HeaderProps> = ({}) => {
                 type="text"
                 style={{ backgroundColor: `${focused}` }}
                 placeholder="날짜 추가"
+                value={arrDate}
                 disabled
               />
             </div>
             <div
               className="search-box"
-              onClick={() => setFocused("rgb(240, 240, 240)")}
+              onClick={() => {
+                setFocused("rgb(240, 240, 240)");
+                setLocationClicked(false);
+                setDateClicked(true);
+                setMemberClicked(false);
+              }}
               tabIndex={0}
             >
               <p className="search-title">체크아웃</p>
               <input
                 className="search-input"
                 type="text"
+                value={depDate}
                 style={{ backgroundColor: `${focused}` }}
                 placeholder="날짜 추가"
                 disabled
@@ -126,7 +157,12 @@ export const Header: React.FC<HeaderProps> = ({}) => {
                 justifyContent: "space-between",
                 alignItems: "center",
               }}
-              onClick={() => setFocused("rgb(240, 240, 240)")}
+              onClick={() => {
+                setFocused("rgb(240, 240, 240)");
+                setLocationClicked(false);
+                setDateClicked(false);
+                setMemberClicked(true);
+              }}
               tabIndex={0}
             >
               <div>
@@ -136,6 +172,7 @@ export const Header: React.FC<HeaderProps> = ({}) => {
                   type="text"
                   style={{ backgroundColor: `${focused}` }}
                   placeholder="게스트 추가"
+                  value={member}
                   disabled
                 />
               </div>
@@ -185,6 +222,13 @@ export const Header: React.FC<HeaderProps> = ({}) => {
             </div>
           </div>
         )}
+      </div>
+      <div className="header_2">
+        {locationClicked && <Location_nav setLocation={setLocation} />}
+        {dateClicked && (
+          <Date_nav setArrDate={setArrData} setDepDate={setDepDate} />
+        )}
+        {memberClicked && <Member_nav setMember={setMember} />}
       </div>
     </div>
   );
